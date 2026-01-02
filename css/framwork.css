@@ -1,0 +1,76 @@
+/* start box */
+.d-flex{
+    display: flex;
+}
+.align-center{
+    align-items: center;
+}
+.space-between{
+    justify-items: center;
+}
+
+/* end box */
+/* stat padding + margin */
+.p-20{
+    padding: 20px;
+}
+.m-20{
+    margin: 20px;
+}
+.p-10{
+    padding: 10px;
+}
+.p-15{
+    padding: 10px;
+}
+
+
+
+
+/* end padding + margin */
+/* start color  */
+.bg-white{
+    background-color: white;
+}
+.c-black{
+    color: black;
+}
+.c-green{
+    color: green;
+}
+/* end color  */
+/* start border radios */
+
+
+.rad-6 {
+border-radius: 6px;
+}
+/* end border radios */
+/* start position  */
+.p-relative{
+    position: relative;
+}
+/* end position  */
+/* stat font  */
+.fs-14{
+   font-size: 14px; 
+}  
+.fw-b{
+    font-weight: bold;
+}
+.text-c{
+    text-align: center;
+}
+/* end font  */
+/* start width  */
+.w-full{
+    width: 100%;
+}
+/* end width  */
+/* start components  */
+.btween-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* end components  */

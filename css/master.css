@@ -1,0 +1,136 @@
+
+
+/* start gloobal rules  */
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body{
+    font-family: "Work Sans", sans-serif;;
+}
+
+:root{
+      --main-color: #2196f3;
+  --main-color-alt: #1787e0;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+*:focus{
+  outline: none;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* end gloobal rules  */
+/* start navbare  */
+.page{
+  background-color: #f1f5f9;
+  min-height: 100vh;
+}
+.sidebar{
+  width: 190px;
+}
+.sidebar .logo{
+  height: 100px;
+  padding-right: 20px;
+  position: relative;
+}
+.logo{
+  padding-bottom: 20px;
+}
+.sidebar ul li a i{
+  padding-left: 10px;
+}
+
+.sidebar ul li a{
+  transition: 0.3s;
+  margin-bottom: 5px;
+
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active{
+  background-color: #f6f6f6;
+}
+.sidebar ul li span{
+  margin-left: 10px;
+
+}
+@media (max-width: 768px) {
+  .sidebar {
+    width: 58px;
+    padding: 10px;
+  }
+  .sidebar ul li span{
+  display: none;
+
+}
+.sidebar .logo{
+  height: 60px;
+  left: 15px;
+}
+.sidebar ul li a.active{
+  background-color: #f6f6f6;
+  width: 35px;
+}
+}
+/* end navbare  */
+/* start header  */
+.content{
+  overflow: hidden;
+}
+header .icons{
+  padding-right: 50px;
+}
+header .search::before{
+  font-family: var(--fa-style-family-classic);
+  content: "\f002";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+    right: 10px;
+    color: #ccc;
+    transform: translateY(-50%);
+
+}
+header .search input{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+ padding-right: 30px;
+}
+header .search input:hover{
+  
+}
+
+/* end header  */
