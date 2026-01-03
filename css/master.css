@@ -9,9 +9,7 @@
 html {
   scroll-behavior: smooth;
 }
-body{
-    font-family: "Work Sans", sans-serif;;
-}
+
 
 :root{
       --main-color: #2196f3;
@@ -25,6 +23,28 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+/* scrol bar  */
+/* ::-webkit-scrollbar{
+  width: 15px;
+
+}
+::-webkit-scrollbar-track{
+  background-color: white;
+  position: absolute;
+  right:  10px;
+
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--main-color);
+
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: var(--main-color-alt);
+
+} */
+/* endscrool bar  */
+
 *:focus{
   outline: none;
 }
@@ -113,6 +133,18 @@ ul {
 header .icons{
   padding-right: 50px;
 }
+@media (max-width: 768px) {
+  .content .head  a span {
+   display: none;
+  }
+}
+@media (max-width: 768px) {
+  header .icons{
+  padding-right: 10px;
+
+}
+
+}
 header .search::before{
   font-family: var(--fa-style-family-classic);
   content: "\f002";
@@ -132,5 +164,47 @@ header .search input{
 header .search input:hover{
   
 }
+.page h1{
+  margin: 20px 20px 40px ;
+}
+
+.page h1::before,
+.page h1::after{
+  content: '';
+  height: 3px;
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+
+}
+.page h1::before{
+  background-color: white;
+  width: 80px;
+}
+.page h1::after{
+  background-color: green;
+  width: 50px;
+}
+
+
 
 /* end header  */
+/* start content  */
+
+.wrapper{
+  grid-template-columns: repeat(auto-fill , minmax(450px , 1fr));
+  margin-left: 20px;
+  margin-right: 20px;
+}
+@media (max-width:767px) {
+  
+.wrapper{
+  grid-template-columns:  minmax(200px , 1fr);
+  margin-left: 10px;
+  margin-right: 10px;
+  gap: 10px;
+}
+  
+  
+}
+/* end content  */
