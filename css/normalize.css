@@ -177,6 +177,11 @@ button,
 input { /* 1 */
   overflow: visible;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+  -webkit-appearance: none ;
+  outline: none;
+}
 
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
