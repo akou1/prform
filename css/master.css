@@ -207,4 +207,13 @@ header .search input:hover{
   
   
 }
+
 /* end content  */
+/* start form  */
+form label{
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  
+}
+/* end form  */

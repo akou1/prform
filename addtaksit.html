@@ -66,39 +66,148 @@
                     <input class="p-10" type="search" placeholder="اكتب الاسم">
                 </div>
             </header>
-            <h1 class="p-relative"> لوحة التحكم </h1>
+            <h1 class="p-relative"> اضافة تقسيط</h1>
             <!-- end head  -->
             <!-- start wrapper  -->
             <div class="wrapper d-grid gap-20">
+                <!-- start add information  -->
                 <div class="formadd  bg-white rad-10 text-c-mobile block-mobile">
-                    <div class="personelinfo d-flex justify-content b-yellow rad-10-per"> <h2 class="">معلومات الزبون</h2></div>
-                    <div class="personelinfo d-flex p-10 c-white bg-per rad-10 m-20"> <h3 class="m-0">معلومات الحساب البريدي</h3></div>
+                    <!-- <div class="personelinfo d-flex justify-content b-yellow rad-10-per">
+                        <h2 class="">معلومات الزبون</h2>
+                    </div> -->
+                    <!-- <div class="personelinfo d-flex p-10 c-white bg-per rad-10 m-20">
+                        <h3 class="m-0">معلومات الحساب البريدي</h3>
+                    </div> -->
                     <form class="">
-                        <label for="ccp" class="w-75 p-10 d-block">الحساب البريدي</label>
-                        <input id="ccp" type="number" name="ccp" class="w-50 rad-5 mt-10">
-                        <label for="cle" class=""> مفتاح:</label>
-                        <input type="number" name="cle" class="w-30">
-                        <label for="first_name">اللقب</label>
-                        <input type="text" name="first_name">
-                        <label for="first_name">الاسم</label>
-                        <input type="text" name="last_name">
+                        <div class=" pf-20 d-fform ">
+                            <label for="ccp" class=" w-50">الحساب البريدي</label>
+                            <label for="cle" class=" w-50"> مفتاح:</label>
+                        </div>
+                        <div class="  d-fform pf-20 ">
+                            <input id="ccp" type="number" name="ccp" class="">
+                            <div class="cld w-50">
+                                <input type="number" name="cle" class="  w-30">
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-fform pf-20">
+                            <label for="first_name" class="w-50">اللقب</label>
+                            <label for="first_name" class="w-50">الاسم</label>
+                        </div>
+                        <div class="d-fform pf-20">
+                            <input type="text" name="first_name" class="w-200">
+                            <div class="w-50">
+                                <input type="text" name="last_name" class="w-200">
+                            </div>
+
+                        </div>
+
+                        <div class="d-fform pf-20">
+
+                            <label for="datebirth">تاريخ الميلاد</label>
+                            <div class="w-50"><label for="placebirth">مكان الميلاد</label></div>
+
+                        </div>
+
+                        <!-- <label for="first_name">الاسم بالعربية</label>
                         <input type="text" name="first_name_ar">
-                        <input type="text" name="last_name_ar">
-                        <input type="date" lang="ar" name="datebirth">
-                        <input type="" >
-                        <input type="text" name="placebirth">
-                        <input type="adreses">
-                        <input type="number" name="identifie">
-                        <input type="date" name="dateident">
-                        <input type="number" name="phonenumber">
+                        <label for="first_name">اللقب بالعربية</label>
+                        <input type="text" name="last_name_ar"> -->
+                        <div class="d-fform pf-20">
+                            <input type="date" name="datebirth">
+                            <div class="w-50"><input type="text" name="placebirth"></div>
+
+                        </div>
+                        <div class="d-fform pf-20">
+                            <label for="adreses">العنوان</label>
+
+                            <div class="w-50">
+                                <label for="identifie">رقم بطاقة التعريف</label>
+                            </div>
+                        </div>
+                        <div class="d-fform pf-20"><input type="adreses">
+                            <div class="w-50"><input type="number" name="identifie"></div>
+                        </div>
+                        <div class="d-fform pf-20">
+                            <label for="dateident">تاريخ اصدار بطاقة التعريف</label>
+                            <div class="w-50">
+
+                                <label for="phonenumber">رقم الهاتف</label>
+                            </div>
+                        </div>
+                        <div class="d-fform pf-20 pb-20">
+                            <input type="date" name="dateident">
+                            <div class="w-50">
+                        
+                                <input type="number" name="phonenumber">
+                            </div>
+                        </div>
                         
                     </form>
                 </div>
+                
+                <!-- end add information  -->
+                 <!-- start add payment info  -->
+               
                 <div class="formaddpay bg-white rad-10 text-c-mobile block-mobile">
-                    <div class="intro p-20  bg-white rad-10">
+                    <form class="">
+                        <div class=" pf-20 d-fform ">
+                            <label for="ccp" class=" w-50">المبلغ الاصلي :</label>
+                            <label for="cle" class=" w-15">  النسبة :</label>
+                            <label for="cle" class=" w-35"> عدد الاشهر :</label>
+                        </div>
+                        <div class="  d-fform pf-20 ">
+                            <input id="ccp" type="number" name="ccp" class="">
+                            <div class="cld w-50">
 
+                                <input type="number" name="cle" class="  w-30">
+
+                                <input type="number" name="cle" class=" par-25 w-30">
+                            </div>
+                    
+                        </div>
+                        <div class=" pf-20 d-fform ">
+                            <label for="ccp" class=" w-50">المبلغ الاصلي :</label>
+                            <label for="cle" class=" w-50"> النسبة :</label>
+                            
+                        </div>
+                        <div class="  d-fform pf-20 ">
+                            <input id="ccp" type="number" name="ccp" class="">
+                            <div class="cld w-50">
+                        
+                                <input type="number" name="cle" class="  w-30">
+                        
+                               
+                            </div>
+                        
+                        </div>
+                    
+                        <div class=" pf-20 d-fform ">
+                            <label for="ccp" class=" w-50">الدفعة الاولية :</label>
+                            
+                        <div class="w-50">
+
+                            <input id="ccp" type="number" name="ccp" class="w-50">
+                        </div>
+                        </div>
+                       
+                     
+                    </form>
+                    <div class="p-20 ">
+                        <h2 class="b-yellow w-75">المبلغ الاصلي<span class="p-20">1200000</span></h2>
+                        <div class="b-yellow w-75">
+                           <h2 class="">النسبة :<span class="p-20">35%</span>  عدد الاشهر :<span class="p-20">12</span></h2>
+                        <!-- <h2 class="">عدد الاشهر<span class="p-20">1200000</span></h2>  -->
+                        </div>
+                        
+                        <h2 class="b-yellow w-75">المبلغ بالنسبة <span class="p-20">1200000</span></h2>
+                        <h2 class="b-green w-75">الاقتطاع الشهري :<span class="p-20">1200000</span></h2>
+                        
                     </div>
                 </div>
+                <!-- end add payment info  -->
 
 
             </div>
