@@ -71,6 +71,10 @@
 
 /* end padding + margin */
 /* start color  */
+.b-red{
+    background-color: red;
+}
+
 .bg-white{
     background-color: white;
 }
@@ -78,7 +82,10 @@
     background-color: green;
 }
 .bg-grey{
-    background-color: #eee;
+    background-color: grey;
+}
+.bg-rgba{
+          background-color: rgba(0, 0, 0, 0.8)
 }
 .c-black{
     color: black;
@@ -101,6 +108,10 @@
 .bg-per{
     background-color: #0d1138;
 }
+.bg-grey{
+    background-color: grey#3f084b;
+}
+
 /* end color  */
 /* start border radios */
 
@@ -123,6 +134,10 @@
 .p-relative{
     position: relative;
 }
+.p-absolute{
+    position: absolute;
+}
+
 /* end position  */
 /* stat font  */
 .fs-14{
@@ -171,6 +186,9 @@
 }
 .w-200{
     width: 200px;
+}
+.h-vp{
+    height: 100vh;
 }
 /* end width  */
 /* start components  */
