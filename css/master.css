@@ -219,4 +219,75 @@ form label{
 .loogo{
   top:  0;
 }
+#iconplus{
+  left: -50px;
+}
+#iconminus{
+     top: 40px;
+    left: 99px;
+}
+#iconplusdis{
+left: 390px;
+top: 6px;
+}
+.hide{
+  display: none !important;
+}
+label{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+/* --- ألوان حقول الإدخال (الأنبوت) --- */
+input[type="text"], 
+input[type="number"], 
+input[type="date"] {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    outline: none;
+    background-color: #fefefe;
+}
+
+/* عند الضغط على الحقل للكتابة */
+input:focus {
+    border-color: #2196F3; /* لون أزرق */
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+    background-color: #fff;
+}
+.btn-print {
+    background-color: #2196F3; /* لون أزرق رسمي */
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px; /* حواف دائرية عصرية */
+    font-family: 'Cairo', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-center: center;
+    gap: 10px; /* مسافة بين الأيقونة والنص */
+    transition: all 0.3s ease; /* سلاسة في التفاعل */
+    box-shadow: 0 4px 6px rgba(33, 150, 243, 0.2);
+    margin-top: 20px;
+    width: fit-content;
+}
+
+/* تأثير عند تمرير الماوس */
+.btn-print:hover {
+    background-color: #1976D2; /* تغميق اللون قليلاً */
+    box-shadow: 0 6px 12px rgba(33, 150, 243, 0.3);
+    transform: translateY(-2px); /* رفعة بسيطة للزر */
+}
+
+/* تأثير عند الضغط */
+.btn-print:active {
+    transform: translateY(0);
+}
+.botoni{
+  bottom: 10px;
+    right: 321px;
+}
 /* end form  */

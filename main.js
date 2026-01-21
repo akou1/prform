@@ -1,79 +1,210 @@
-function getcle(get_cle) {
-  // 1. تحويل النص المدخل إلى رقم صحيح كبير لضمان الدقة
-  let inputVal = BigInt(get_cle.toString().replace(/\s/g, "")); // إزالة الفراغات إن وجدت
+const TaksitSystem = {
+  // 1. تعريف كافة العناصر (Selectors)
+  elements: {
+    ccp: document.getElementById("ccp"),
+    cle: document.getElementById("cle"),
+    total1: document.getElementById("totalAmount"),
+    rate1: document.getElementById("annualRate"),
+    total2: document.getElementById("totalAmounttwo"),
+    rate2: document.getElementById("annualRatetwo"),
+    months: document.getElementById("months"),
+    discount: document.getElementById("discountprice"),
+    // عناصر العرض (Display)
+    fprice: document.getElementById("fprice"),
+    perce: document.getElementById("perce"),
+    monthc: document.getElementById("monthc"),
+    perpri: document.getElementById("perpri"),
+    monthlycut: document.getElementById("monthlycut"),
+    // أزرار التحكم
+    plusIcon: document.getElementById("iconplus"),
+    minusIcon: document.getElementById("iconminus"),
+    plusDis: document.getElementById("iconplusdis"),
+    minusDis: document.getElementById("iconminusdis"),
+    secondSection: document.getElementById("secondmonton"),
+    disContainer: document.getElementById("disbut"),
+  },
 
-  // 2. تطبيق الخوارزمية
-  let ccp = inputVal * 100n;
-  let n1 = Number(ccp % 97n);
-  let n2 = 85;
+  // 2. محرك حساب المفتاح (CCP Key)
+  getCleCCP: function (val) {
+    if (val === "" || isNaN(val)) return "";
+    let inputVal = BigInt(val.toString().replace(/\s/g, ""));
+    let ccp = inputVal * 100n;
+    let n1 = Number(ccp % 97n);
+    let n2 = n1 + 85 > 97 ? n1 + 85 - 97 : n1 + 85;
+    let cle = n2 == 97 ? 97 : 97 - n2;
+    return cle.toString().padStart(2, "0");
+  },
 
-  if (n1 + 85 > 97) {
-    n2 = n1 + 85 - 97;
-  } else {
-    n2 = n1 + 85;
-  }
+  // 3. المحرك الرياضي للتقسيط
+  updateUI: function () {
+    try {
+      const el = this.elements;
+      let v1 = eval(el.total1.value) || 0;
+      let v2 = eval(el.total2.value) || 0;
+      let ann1 = parseFloat(el.rate1.value) || 0;
+      let ann2 = parseFloat(el.rate2.value) || 0;
+      let mon = parseInt(el.months.value) || 0;
+      let disc = parseFloat(el.discount.value) || 0;
 
-  let cle = n2 == 97 ? 97 : 97 - n2;
+      // الحسابات
+      let totalWithPer1 = v1 * (1 + ann1 / 100);
+      let totalWithPer2 = v2 * (1 + ann2 / 100);
+      let globalTotal = totalWithPer1 + totalWithPer2 - disc;
 
-  // 3. إرجاع النتيجة مع التأكد من أنها رقمين (مثلاً 05 بدل 5)
-  return cle.toString().padStart(2, "0");
-}
+      // تحديث الواجهة
+      el.fprice.innerHTML = (v1 + v2).toFixed(2);
+      el.perpri.innerHTML = globalTotal.toFixed(2);
+      el.monthc.innerHTML = mon;
+      el.perce.innerHTML = v2 > 0 ? `${ann1}% + ${ann2}%` : `${ann1}%`;
 
-// ربط الحقول
-let ccpInput = document.getElementById("ccp");
-let cleInput = document.getElementById("cle");
+      if (globalTotal > 0 && mon > 0) {
+        el.monthlycut.innerHTML = (globalTotal / mon).toFixed(2);
+      } else {
+        el.monthlycut.innerHTML = "0.00";
+      }
+    } catch (e) {
+      console.log("Waiting for valid math...");
+    }
+  },
 
-ccpInput.onkeyup = function () {
-  let val = ccpInput.value;
-  if (val === "" || isNaN(val)) {
-    cleInput.value = ""; // مسح النتيجة إذا كان الحقل فارغاً
-    return;
-  }
-  cleInput.value = getcle(val);
+  // 4. دالة التشغيل والربط (Initialization)
+  init: function () {
+    const self = this;
+    const el = this.elements;
+
+    // ربط الـ CCP
+    el.ccp.onkeyup = () => (el.cle.value = self.getCleCCP(el.ccp.value));
+
+    // ربط حقول الحسابات
+    const inputs = [
+      el.total1,
+      el.rate1,
+      el.total2,
+      el.rate2,
+      el.months,
+      el.discount,
+    ];
+    inputs.forEach((input) => {
+      if (input) input.onkeyup = () => self.updateUI();
+    });
+
+    // قيود الطول (Length Limits)
+    this.setLimit(el.months, 2);
+    this.setLimit(el.rate1, 2);
+    this.setLimit(el.rate2, 2);
+
+    // أزرار الإظهار والإخفاء
+    el.plusIcon.onclick = () => {
+      el.secondSection.classList.remove("hide");
+      el.plusIcon.classList.add("hide");
+    };
+    el.minusIcon.onclick = () => {
+      el.secondSection.classList.add("hide");
+      el.plusIcon.classList.remove("hide");
+      el.total2.value = "";
+      el.rate2.value = "";
+      self.updateUI();
+    };
+    el.plusDis.onclick = () => {
+      el.disContainer.classList.remove("hide");
+      el.plusDis.classList.add("hide");
+    };
+    el.minusDis.onclick = () => {
+      el.disContainer.classList.add("hide");
+      el.plusDis.classList.remove("hide");
+      el.discount.value = "";
+      self.updateUI();
+    };
+  },
+
+  setLimit: function (element, max) {
+    element.oninput = () => {
+      if (element.value.length > max)
+        element.value = element.value.slice(0, max);
+      this.updateUI();
+    };
+  },
+
+  // أضف هذه الدوال داخل كائن TaksitSystem في ملف main.js
+  // أضف هذه الدالة داخل كائن TaksitSystem قبل القوس النهائي
+  sendToPrintServer: function () {
+    const el = this.elements;
+
+    // 1. تجميع كل البيانات في كائن واحد (طرد بريدي)
+    const payload = {
+      personal_info: {
+        ccp: el.ccp.value,
+        cle: el.cle.value,
+        first_name: document.getElementById("firstName").value,
+        last_name: document.getElementById("lastName").value,
+        birth_date: document.getElementById("birthDate").value,
+        birth_place: document.getElementById("birthPlace").value,
+        address: document.getElementById("address").value,
+        national_id: document.getElementById("nationalID").value,
+        id_issue_date: document.getElementById("idIssueDate").value,
+        phone: document.getElementById("phone").value,
+      },
+      financial_info: {
+        amount_1: el.total1.value,
+        rate_1: el.rate1.value,
+        amount_2: el.total2.value,
+        rate_2: el.rate2.value,
+        months: el.months.value,
+        discount: el.discount.value,
+        total_raw: el.fprice.innerText,
+        final_total: el.perpri.innerText,
+        monthly_cut: el.monthlycut.innerText,
+      },
+    };
+
+    // 2. تغيير شكل الزر لإعطاء انطباع بالمعالجة
+    const btn = document.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    btn.innerHTML =
+      "جاري الإرسال للطباعة... <i class='fa-solid fa-spinner fa-spin'></i>";
+    btn.disabled = true;
+
+    // 3. إرسال الطلب لجانغو
+    fetch("/api/process-print/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": this.getCookie("csrftoken"),
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          alert("تم إرسال البيانات بنجاح، السكريبت سيبدأ الطباعة الآن.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("فشل الاتصال بالسيرفر");
+      })
+      .finally(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      });
+  },
+
+  // لا تنسَ إضافة دالة جلب الكوكيز لتجنب خطأ الـ CSRF في جانغو
+  getCookie: function (name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === name + "=") {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  },
 };
 
-// حساب التقسيط
-function calculateInstallment(totalAmount, annualRate, months) {
-  // حساب معامل الزيادة (مثلاً 5% تصبح 1.05)
-  let markupFactor = 1 + annualRate / 100;
-
-  // إجمالي المبلغ بعد إضافة النسبة
-  let totalAmountWithPercentage = totalAmount * markupFactor;
-
-  // حساب القسط الشهري (المبلغ الإجمالي الجديد تقسيم عدد الأشهر)
-  let monthlyPayment = totalAmountWithPercentage / months;
-
-  // إرجاع النتائج كـ "كائن" (Object) لتتمكن من الوصول لكل قيمة منها
-  return {
-    monthlyPayment: monthlyPayment.toFixed(2),
-    totalWithInterest: totalAmountWithPercentage.toFixed(2),
-  };
-}
-
-let totalAmount = document.getElementById("totalAmount");
-let annualRate = document.getElementById("annualRate");
-let months = document.getElementById("months");
-let fprice = document.getElementById("fprice");
-let monthc = document.getElementById("monthc");
-
-
-
-totalAmount.onkeyup = function () {
-  // //   let operator = monton.value
-  // //   let result = eval(operator)
-  let valr = totalAmount.value;
-  let val= eval(valr)
-  fprice.innerHTML = val;
-};
-annualRate.onkeyup = function () {
-  let annualR = annualRate.value;
-  perce.innerHTML = annualR;
-};
-months.onkeyup = function () {
-  let mon = months.value;
-  monthc.innerHTML = mon;
-};
-let result = calculateInstallment(total, interest, period);
-
-console.log("إجمالي المبلغ بعد الزيادة: " + result.totalWithInterest); // سيعطيك 1500000
-console.log("القسط الشهري: " + result.monthlyPayment); // سيعطيك 62500.00
+// تشغيل النظام بالكامل
+TaksitSystem.init();
