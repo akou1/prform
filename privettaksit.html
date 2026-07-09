@@ -71,7 +71,7 @@
             <!-- start wrapper  -->
             <div class="wrapper d-grid gap-20 mt-20">
                 <!-- start add information  -->
-                <div class="formadd  bg-white rad-10 text-c-mobile block-mobile ">
+                <div class="formadd  bg-white rad-10 text-c-mobile block-mobile">
                     <!-- <div class="personelinfo d-flex justify-content b-yellow rad-10-per">
                         <h2 class="">معلومات الزبون</h2>
                     </div> -->
@@ -79,36 +79,20 @@
                         <h3 class="m-0">معلومات الحساب البريدي</h3>
                     </div> -->
                     <form class="">
-                        <div class=" pf-20 d-fform ">
-                            <label for="ccp" class=" w-50">الحساب البريدي</label>
-                            <label for="cle" class=" w-50"> مفتاح</label>
-                        </div>
-                        <div class="  d-fform pf-20 ">
-                            <input id="ccp" type="number" name="ccp" class="">
-                            <div class="cld w-50">
-                                <input id="cle" type="number" name="cle" class="w-30" >
-                            </div>
-
-                        </div>
-
-
                         <div class="d-fform pf-20">
-                            <label for="first_name" class="w-50">اللقب</label>
-                            <label for="first_name" class="w-50">الاسم</label>
+                            <label for="full_name" class="w-50">الاسم واللقب :</label>
+                            <div class="w-50"><label for="phonenum">قيمة الوصل : </label></div>
                         </div>
                         <div class="d-fform pf-20">
-                            <input type="text" id="firstName" name="first_name" class="w-200">
-                            <div class="w-50">
-                                <input type="text" id="lastName" name="last_name" class="w-200">
-                            </div>
+                            <input type="text" id="full_name" name="full_name" class="w-200">
+                            <!-- <input type="number" id="phone" name="phone_number"> -->
+                            <div class="w-50"><input type="number" id="phonenum" name="phonenum"></div>
 
                         </div>
 
                         <div class="d-fform pf-20">
 
-                            <label for="datebirth">تاريخ الميلاد</label>
-                            <div class="w-50"><label for="placebirth">مكان الميلاد</label></div>
-
+                            
                         </div>
 
                         <!-- <label for="first_name">الاسم بالعربية</label>
@@ -116,35 +100,44 @@
                         <label for="first_name">اللقب بالعربية</label>
                         <input type="text" name="last_name_ar"> -->
                         <div class="d-fform pf-20">
-                            <input type="date" id="birthDate" name="datebirth" >
-                            <div class="w-50"><input type="text" id="birthPlace" name="placebirth"></div>
-
+                            
                         </div>
                         <div class="d-fform pf-20">
-                            <label for="adreses">العنوان</label>
-
-                            <div class="w-50">
-                                <label for="identifie">رقم بطاقة التعريف</label>
-                            </div>
+                            <label for="numrecip">المؤسسة</label>
+                            
+                           
                         </div>
-                        <div class="d-fform pf-20"><input type="adreses" id="address" name="adreses">
-                            <div class="w-50"><input type="number" id="nationalID" name="identifie"></div>
+                        <div class="d-fform pf-20 w-full">
+                            <!-- <input type="text" id="numrecip" list="companylist" name="numrecip " class="w-75"> -->
+                        <div class="search-container">
+                            <input type="text" id="search" placeholder="اكتب اسم المؤسسة..." list="institutions">
+                        
+                            <datalist id="institutions">
+                                <!-- هنا يتم تعبئة البيانات -->
+                            </datalist>
+                        
+                            <div class="selected-value" id="selectedValue"></div>
                         </div>
-                        <div class="d-fform pf-20">
-                            <label for="dateident">تاريخ اصدار بطاقة التعريف</label>
+                            <!-- <div class="w-50"><input type="text" id="rahn" name="rahn"></div> -->
+                        </div>
+                        <!-- <div class="d-fform pf-20">
+                            <label for="datepaid">تاريخ الشراء :</label>
                             <div class="w-50">
-
+                                <label for="dateident">تاريخ التذكير :</label>
+                                
                                 <label for="phonenumber">رقم الهاتف</label>
                             </div>
-                        </div>
-                        <div class="d-fform pf-20 pb-20">
-                            <input type="date" id="idIssueDate" name="dateident">
+                        </div> -->
+                        <!-- <div class="d-fform pf-20 pb-20">
+                            <input type="date" id="datepaid" name="datepaid" value="">
                             <div class="w-50">
-                        
-                                <input type="number" id="phone" name="phonenumber">
-                                <span id="datecute" name="datecute" value="6666">5555</span>
+                                <select id="daySelect" name="day">
+                                    <option value="">اختر اليوم</option>
+                                </select>
+                                <input type="number" id="datreminder" name="datreminder" class="w-25">
+                                <span class="p-10">من كل شهر</span>
                             </div>
-                        </div>
+                        </div> -->
                         
                     </form>
                 </div>
@@ -220,13 +213,27 @@
             <!-- end wrapper  -->
             
 
-            <div class="  botoni  p-absolute">
-                <button id="btnbaladia" type="submit" class="btn-print">
-                    <i class="fa-solid fa-print"></i>طباعة وثائق البلدية </button>
+            <div class="  botonipr  p-absolute">
+                <button id="btnpriv" type="submit" class="btn-print">
+                    <i class="fa-solid fa-print"></i>طباعة وثيقة تتبع الاقساط </button>
             </div>
             
         </div>
     </div>
+    <script>
+        // الكود هنا ينفذ بعد تحميل كل العناصر
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+
+        const dateInput = document.getElementById("datepaid");
+        
+            dateInput.value = formattedDate;
+            
+        
+    </script>
     <script src="js/main.js" ></script>
 </body>
 

@@ -188,6 +188,9 @@
 .w-full{
     width: 100%;
 }
+.w-w50{
+    width: 50px;
+}
 .w-50{
     width: 50%;
 }
@@ -224,5 +227,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.form-add{
+    display: grid;
+    grid-template-columns: repeat(7,minmax(50px , 1fr)) ;
+    gap: 20px;
+    
 }
 /* end components  */

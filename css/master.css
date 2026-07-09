@@ -192,7 +192,7 @@ header .search input:hover{
 /* start content  */
 
 .wrapper{
-  grid-template-columns: repeat(auto-fill , minmax(450px , 1fr));
+  grid-template-columns: 1fr;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -288,6 +288,10 @@ input:focus {
 }
 .botoni{
   bottom: 10px;
+    right: 321px;
+}
+.botonipr{
+  bottom: 100px;
     right: 321px;
 }
 /* end form  */

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <title>بحث بسيط</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        li {
+            padding: 10px;
+            margin: 2px 0;
+            background-color: aqua;
+            display: block;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        li:hover {
+            background-color: #00cccc;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin: auto;
+        }
+
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .selected-value {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            border: 2px solid #00cccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="searchInput" placeholder="ابحث هنا...">
+    </div>
+
+<script src="js/mainb.js"></script>
+
+</body>
+
+</html>
