@@ -188,6 +188,9 @@
 .w-full{
     width: 100%;
 }
+.w-w100{
+    width: 100px;
+}
 .w-w50{
     width: 50px;
 }
@@ -230,7 +233,7 @@
 }
 .form-add{
     display: grid;
-    grid-template-columns: repeat(7,minmax(50px , 1fr)) ;
+    grid-template-columns: 1fr auto repeat(2,minmax(200px , 1fr)) minmax(75px , 1fr) 100px 50px ;
     gap: 20px;
     
 }
