@@ -233,7 +233,7 @@
 }
 .form-add{
     display: grid;
-    grid-template-columns: 1fr auto repeat(2,minmax(200px , 1fr)) minmax(75px , 1fr) 100px 50px ;
+    grid-template-columns:   2fr 0.25fr repeat(2,2fr) repeat(3,1fr) ;
     gap: 20px;
     
 }

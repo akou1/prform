@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج إدخال البيانات الموحد</title>
+    <!-- تضمين Bootstrap 5 لدعم التنسيق والسلاسة -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+        }
+
+        /* كارت البيانات الرئيسي */
+        .form-container-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+        }
+
+        /* الشريط الرمادي الموحد الذي يجمع الحقول في سطر واحد */
+        .horizontal-form-row {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            /* إجبار الحقول على البقاء في سطر واحد */
+            gap: 10px;
+            /* مسافة متناسقة بين الحقول */
+            align-items: flex-end;
+            overflow-x: auto;
+            /* شريط تمرير أفقي ذكي للشاشات الصغيرة */
+        }
+
+        /* تنسيق العمود الصغير بداخل الشريط الرمادي */
+        .form-group-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        /* تنسيق العناوين الصغيرة (Labels) */
+        .form-group-item label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 6px;
+            text-align: center;
+            /* توسيط النص فوق الحقل */
+            white-space: nowrap;
+        }
+
+        /* تخصيص صناديق الإدخال */
+        .form-group-item .form-control {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            padding: 6px 10px;
+            text-align: center;
+            height: 38px;
+        }
+
+        /* تأثير عند الضغط على الحقل */
+        .form-group-item .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        /* زر الحفظ الأزرق */
+        .btn-submit-save {
+            background-color: #0d6efd;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-submit-save:hover {
+            background-color: #d70b0b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="form-container-card">
+            <!-- عنوان النموذج -->
+            <h4 class="mb-4 text-dark fw-bold text-end">نموذج إدخال البيانات الموحد</h4>
+
+            <form>
+                <!-- شريط الحقول الأفقي الواحد -->
+                <div class="horizontal-form-row">
+
+                    <!-- الحساب البريدي (عرض مرن للأرقام الطويلة) -->
+                    <div class="form-group-item" style="flex: 2.5; min-width: 140px;">
+                        <label for="ccp">الحساب البريدي</label>
+                        <input id="ccp" type="number" name="ccp" class="form-control" placeholder="الحساب البريدي">
+                    </div>
+
+                    <!-- المفتاح (عرض صغير جداً يناسب رقمين) -->
+                    <div class="form-group-item" style="width: 65px; flex-shrink: 0;">
+                        <label for="cle">المفتاح</label>
+                        <input id="cle" type="number" name="cle" class="form-control" placeholder="عدد">
+                    </div>
+
+                    <!-- الاسم (عرض مرن للنصوص) -->
+                    <div class="form-group-item" style="flex: 2; min-width: 120px;">
+                        <label for="firstName">الاسم</label>
+                        <input type="text" id="firstName" name="first_name" class="form-control" placeholder="الاسم">
+                    </div>
+
+                    <!-- اللقب (عرض مرن للنصوص) -->
+                    <div class="form-group-item" style="flex: 2; min-width: 120px;">
+                        <label for="lastName">اللقب</label>
+                        <input type="text" id="lastName" name="last_name" class="form-control" placeholder="اللقب">
+                    </div>
+
+                    <!-- الاقتطاع الشهري (تم تكبيره ليناسب 10 أرقام بمرونة) -->
+                    <div class="form-group-item" style="width: 145px; flex-shrink: 0;">
+                        <label for="monthly_deduction">الاقتطاع الشهري</label>
+                        <input type="number" id="monthly_deduction" name="monthly_deduction" class="form-control"
+                            placeholder="10 أرقام">
+                    </div>
+
+                    <!-- عدد الاقتطاعات (يناسب رقمين) -->
+                    <div class="form-group-item" style="width: 95px; flex-shrink: 0;">
+                        <label for="deductions_count">عدد الاقتطاعات</label>
+                        <input type="number" id="deductions_count" name="deductions_count" class="form-control"
+                            placeholder="رقمين">
+                    </div>
+
+                    <!-- رقم الزبون (يناسب 5 أرقام) -->
+                    <div class="form-group-item" style="width: 105px; flex-shrink: 0;">
+                        <label for="customer_id">رقم الزبون</label>
+                        <input type="text" id="customer_id" name="customer_id" class="form-control"
+                            placeholder="5 أرقام">
+                    </div>
+
+                </div>
+
+                <!-- زر الحفظ -->
+                <div class="text-start mt-3">
+                    <button type="submit" class="btn-submit-save">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-floppy" viewBox="0 0 16 16">
+                            <path d="M11 2H9v3h2z" />
+                            <path
+                                d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5M3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+                        </svg>
+                        حفظ البيانات
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
